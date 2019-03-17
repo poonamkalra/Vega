@@ -77,3 +77,4 @@ namespace vega.Migrations
         }
     }
 }
+
