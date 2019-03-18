@@ -20,7 +20,7 @@ using Microsoft.EntityFrameworkCore;
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateVehicle([FromBody]VehicleResource vehicleResource)
+        public async Task<IActionResult> CreateVehicle([FromBody]SaveVehicleResource vehicleResource)
         {
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -32,11 +32,19 @@ using Microsoft.EntityFrameworkCore;
                  return BadRequest(ModelState);
             }
 
-            var vehicle  = mapper.Map<VehicleResource, Vehicle>(vehicleResource);
+            var vehicle  = mapper.Map<SaveVehicleResource, Vehicle>(vehicleResource);
             vehicle.LastUpdate = DateTime.Now;
 
             context.Vehicles.Add(vehicle);
             await context.SaveChangesAsync();
+
+             vehicle = await context.Vehicles
+                .Include(I => I.Features)
+                    .ThenInclude(vf => vf.Feature)
+                .Include(I => I.Model)   
+                    .ThenInclude(m => m.Make) 
+                .SingleOrDefaultAsync(f => f.Id == vehicle.Id);
+
 
             var result = mapper.Map<Vehicle, VehicleResource>(vehicle);
             return Ok(result);
@@ -45,14 +53,19 @@ using Microsoft.EntityFrameworkCore;
         [HttpGet("{id}")]
         public async Task<IActionResult> GetVehicle(int id)
         {
-            var vehicle = await context.Vehicles.Include(I => I.Features).SingleOrDefaultAsync(f => f.Id == id);
+            var vehicle = await context.Vehicles
+                .Include(I => I.Features)
+                    .ThenInclude(vf => vf.Feature)
+                .Include(I => I.Model)   
+                    .ThenInclude(m => m.Make) 
+                .SingleOrDefaultAsync(f => f.Id == id);
 
             if(vehicle == null)
-             return NotFound();
+                return NotFound();
 
             var vehicleResource = mapper.Map<Vehicle, VehicleResource>(vehicle);
              
-             return Ok(vehicleResource);
+            return Ok(vehicleResource);
         }
 
         [HttpDelete("{id}")]
@@ -69,7 +82,7 @@ using Microsoft.EntityFrameworkCore;
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateVehicle(int id, [FromBody]VehicleResource vehicleResource)
+        public async Task<IActionResult> UpdateVehicle(int id, [FromBody]SaveVehicleResource vehicleResource)
         {
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -81,9 +94,16 @@ using Microsoft.EntityFrameworkCore;
                  return BadRequest(ModelState);
             }
 
-            var vehicle = await context.Vehicles.Include(v => v.Features).SingleOrDefaultAsync(v => v.Id == id);
+            //var vehicle = await context.Vehicles.Include(v => v.Features).SingleOrDefaultAsync(v => v.Id == id);
 
-            mapper.Map<VehicleResource, Vehicle>(vehicleResource, vehicle);
+            var vehicle = await context.Vehicles
+                .Include(I => I.Features)
+                    .ThenInclude(vf => vf.Feature)
+                .Include(I => I.Model)   
+                    .ThenInclude(m => m.Make) 
+                .SingleOrDefaultAsync(f => f.Id == id);
+
+            mapper.Map<SaveVehicleResource, Vehicle>(vehicleResource, vehicle);
             vehicle.LastUpdate = DateTime.Now;
 
             //context.Vehicles.Add(vehicle);
