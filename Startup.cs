@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using vega.Models;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using Vega.Models.Persistence;
 
 namespace vega
 {
@@ -23,6 +24,8 @@ namespace vega
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IVehicleRepository, VehicleRepository>();
+             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddAutoMapper();
             services.AddDbContext<VegaDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
