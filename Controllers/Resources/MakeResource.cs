@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Vega.Controllers.Resources;
 
-namespace vega.Controllers.Resources
+namespace Vega.Controllers.Resources
 {
     public class MakeResource: KeyValuePairResource
     {

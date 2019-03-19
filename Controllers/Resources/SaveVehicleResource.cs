@@ -1,10 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 using System;
 using System.Collections.Generic;
-using vega.Models;
+using Vega.Core;
 using System.Collections.ObjectModel;
 
-namespace vega.Controllers.Resources
+namespace Vega.Controllers.Resources
 {
     public class ContactResource
     {

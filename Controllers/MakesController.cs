@@ -1,12 +1,13 @@
-using  vega.Models;
+using  Vega.Core.Models;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using AutoMapper;
-using vega.Controllers.Resources;
+using Vega.Controllers.Resources;
+using Vega.Persistence;
 
-namespace vega.Controllers
+namespace Vega.Controllers
 {
     public class MakesController: Controller
     {

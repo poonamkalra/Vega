@@ -1,13 +1,13 @@
-using vega.Models;
+using Vega.Core.Models;
 using Microsoft.AspNetCore.Mvc;
-using vega.Controllers.Resources;
+using Vega.Controllers.Resources;
 using AutoMapper;
 using System;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Vega.Models.Persistence;
+using Vega.Core;
 
-namespace vega.Controllers
+namespace Vega.Controllers
 {
     [Route("/api/vehicles")]
     public class VehiclesController : Controller
@@ -98,6 +98,8 @@ namespace vega.Controllers
 
             //context.Vehicles.Add(vehicle);
             await unitOfWork.CompleteAsync();
+
+            vehicle = await repository.GetVehicle(id);
 
             var result = mapper.Map<Vehicle, VehicleResource>(vehicle);
             return Ok(result);

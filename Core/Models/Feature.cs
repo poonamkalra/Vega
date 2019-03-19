@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-namespace vega.Models
+namespace Vega.Core.Models
 {
     public class Feature
     {

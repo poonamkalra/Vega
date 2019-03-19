@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System;
-namespace vega.Models
+namespace Vega.Core.Models
 {
      [Table("Vehicles")]
     public class Vehicle

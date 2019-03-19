@@ -5,12 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using vega.Models;
+using Vega.Core.Models;
+using Vega.Core;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
-using Vega.Models.Persistence;
+using Vega.Persistence;
 
-namespace vega
+namespace Vega
 {
     public class Startup
     {

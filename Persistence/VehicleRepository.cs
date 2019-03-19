@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using vega.Models;
-
-namespace Vega.Models.Persistence
+using Vega.Core.Models;
+using Vega.Core;
+namespace Vega.Persistence
 {
     public class VehicleRepository: IVehicleRepository
     {

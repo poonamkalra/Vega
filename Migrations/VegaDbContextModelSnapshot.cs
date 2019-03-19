@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using vega.Models;
+using Vega.Persistence;
 
-namespace vega.Migrations
+namespace Vega.Migrations
 {
     [DbContext(typeof(VegaDbContext))]
     partial class VegaDbContextModelSnapshot : ModelSnapshot
