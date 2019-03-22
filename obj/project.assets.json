@@ -11780,11 +11780,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Gits\\Vega\\vega.csproj",
+      "projectUniqueName": "c:\\Gits\\Vega\\vega.csproj",
       "projectName": "vega",
-      "projectPath": "C:\\Gits\\Vega\\vega.csproj",
+      "projectPath": "c:\\Gits\\Vega\\vega.csproj",
       "packagesPath": "C:\\Users\\poonam.kalra\\.nuget\\packages\\",
-      "outputPath": "C:\\Gits\\Vega\\obj\\",
+      "outputPath": "c:\\Gits\\Vega\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
