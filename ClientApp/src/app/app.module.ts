@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
-
+import {ToastyModule} from 'ng2-toasty';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -29,6 +29,7 @@ import {FeatureService} from './services/feature.service';
     HttpClientModule,
     HttpModule,
     FormsModule,
+    ToastyModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'vehicle-form', component: VehicleFormComponent} ,
