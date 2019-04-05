@@ -54,17 +54,9 @@ export class VehicleFormComponent implements OnInit {
   {
     this.vehicleservice.saveVehicle(this.vehicle)
                        .subscribe(x => console.log(x),
-                                  err => {
-                                    this.toastyService.error(
-                                      {
-                                          title: 'Error',
-                                          msg: 'An error occured',
-                                          theme: 'bootstrap',
-                                          showClose: true,
-                                          timeout: 5000
-                                        }
-                                      )
-                                    }
+                                  // err => {
+                                    
+                                    // }
                                   );
   }
 }
